@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weather</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body data-sky="clear">
+<main>
+  <form id="search">
+    <input type="search" id="q" placeholder="Search for a city" aria-label="City name" autocomplete="off">
+    <button type="submit">Search</button>
+    <button type="button" id="geo" title="Use my location" aria-label="Use my location">📍</button>
+    <button type="button" id="unit" aria-label="Switch units">°F</button>
+  </form>
+  <p id="msg" role="status"></p>
+
+  <section class="hero">
+    <div class="place" id="place">Loading…</div>
+    <div class="temp" id="temp">--</div>
+    <div class="cond" id="cond"></div>
+  </section>
+
+  <section class="stats" id="stats"></section>
+
+  <h2>Next 24 hours</h2>
+  <section class="hourly" id="hourly"></section>
+
+  <h2>7-day forecast</h2>
+  <section class="days" id="days"></section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+  :root {
+    --sky-a: #1f4e79; --sky-b: #5c9ad1;
+    --ink: #fff; --ink-soft: rgba(255,255,255,.72);
+    --panel: rgba(255,255,255,.14); --line: rgba(255,255,255,.22);
+    --font: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  body[data-sky="clear-night"] { --sky-a: #0c1230; --sky-b: #2b3a7a; }
+  body[data-sky="cloud"]       { --sky-a: #47566a; --sky-b: #93a3b8; }
+  body[data-sky="rain"]        { --sky-a: #1d2b3a; --sky-b: #48627c; }
+  body[data-sky="snow"]        { --sky-a: #5b7186; --sky-b: #b9cbdc; }
+  body[data-sky="storm"]       { --sky-a: #171a2b; --sky-b: #4a4468; }
+  body[data-sky="fog"]         { --sky-a: #5d6870; --sky-b: #a7b0b5; }
+
+  * { box-sizing: border-box; margin: 0; }
+  html { height: 100%; }
+  body {
+    min-height: 100%; font-family: var(--font); color: var(--ink);
+    background: linear-gradient(170deg, var(--sky-a), var(--sky-b)) fixed;
+    transition: background 0.6s;
+  }
+  main { max-width: 720px; margin: 0 auto; padding: 24px 20px 56px; }
+
+  form { display: flex; gap: 8px; }
+  input, button { font: inherit; color: inherit; }
+  input[type=search] {
+    flex: 1; min-width: 0; padding: 12px 16px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--panel);
+  }
+  input::placeholder { color: var(--ink-soft); }
+  button {
+    padding: 12px 16px; border-radius: 999px; cursor: pointer;
+    border: 1px solid var(--line); background: var(--panel);
+  }
+  button:hover { background: rgba(255,255,255,.24); }
+  :is(input, button):focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+  #msg { min-height: 1.4em; margin: 10px 4px 0; font-size: .9rem; color: var(--ink-soft); }
+
+  .hero { padding: 28px 0 8px; }
+  .place { font-size: 1.15rem; font-weight: 600; }
+  .temp { font-size: clamp(6rem, 26vw, 11rem); font-weight: 800; line-height: .9; letter-spacing: -.05em; margin: 8px 0 4px -6px; }
+  .temp sup { font-size: .32em; font-weight: 300; letter-spacing: 0; vertical-align: top; position: relative; top: .35em; }
+  .cond { font-size: 1.5rem; font-weight: 300; }
+  .cond span { margin-right: 8px; }
+
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 26px 0; }
+  .stat { padding: 14px; border-radius: 16px; background: var(--panel); }
+  .stat b { display: block; font-size: 1.3rem; font-weight: 600; margin-top: 2px; }
+  .stat small, h2 { color: var(--ink-soft); font-size: .85rem; font-weight: 400; }
+  h2 { margin: 0 0 10px 2px; }
+
+  .hourly { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 26px; }
+  .hour { flex: 0 0 64px; text-align: center; padding: 12px 0; border-radius: 16px; background: var(--panel); }
+  .hour div:nth-child(2) { font-size: 1.4rem; margin: 6px 0; }
+
+  .days { border-radius: 20px; background: var(--panel); padding: 4px 16px; }
+  .day { display: grid; grid-template-columns: 48px 32px 40px 1fr 40px; align-items: center; gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .day:last-child { border: 0; }
+  .day .lo { color: var(--ink-soft); text-align: right; }
+  .track { height: 6px; border-radius: 3px; background: var(--line); position: relative; }
+  .track i { position: absolute; top: 0; bottom: 0; border-radius: 3px; background: #fff; }
+  .rain { font-size: .8rem; color: var(--ink-soft); }
+
+  @media (prefers-reduced-motion: reduce) { body { transition: none; } }
